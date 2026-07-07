@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>WasiStudent</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="shell" id="app">
+
+<!-- LOADING -->
+<div class="loading on" id="scr-loading">
+  <div class="mk" id="loading-icon"></div>
+  <div class="nm">WasiStudent</div>
+  <div class="tg">Tu wasi te espera</div>
+  <div class="br"></div>
+</div>
+
+<!-- AUTH -->
+<div class="scr" id="scr-auth">
+  <div style="padding:40px 24px">
+    <div class="logo-box" id="auth-logo"></div>
+    <h1 class="auth-title" id="auth-title">Bienvenido</h1>
+    <p class="auth-sub" id="auth-sub">Ingresa para encontrar tu wasi en Cusco</p>
+    <div id="auth-name-field" style="display:none">
+      <div class="fld"><label>Nombre completo</label><input type="text" id="reg-name" placeholder="Tu nombre"></div>
+    </div>
+    <div class="fld"><label>Correo electronico</label><input type="email" id="auth-email" placeholder="correo@ejemplo.com"></div>
+    <div class="fld"><label>Contraseña</label><input type="password" id="auth-pass" placeholder="Minimo 6 caracteres"></div>
+    <div id="auth-phone-field" style="display:none">
+      <div class="fld"><label>Telefono</label><input type="tel" id="reg-phone" placeholder="+51 984..."></div>
+      <div class="fld"><label>Universidad</label>
+        <select id="reg-uni"><option value="UNSAAC">UNSAAC</option><option value="UAC">Universidad Andina</option><option value="Continental">Universidad Continental</option></select>
+      </div>
+    </div>
+    <div id="auth-err" class="auth-err" style="display:none"></div>
+    <button class="btn btn-pri btn-blk" id="auth-btn" onclick="Auth.doAuth()">Iniciar sesion</button>
+    <button class="btn btn-gst btn-blk" style="margin-top:8px" onclick="Auth.toggle()" id="auth-toggle">No tengo cuenta</button>
+  </div>
+</div>
+
+<!-- HOME -->
+<div class="scr" id="scr-home">
+  <div class="tb"><h2 id="home-greeting">Hola</h2><p id="home-sub">Tu wasi te espera.</p></div>
+  <div id="home-content"></div>
+</div>
+
+<!-- EXPLORE -->
+<div class="scr" id="scr-explore">
+  <div class="tb"><h2>Explorar</h2><p>Encuentra tu cuarto ideal</p></div>
+  <div class="search-bar"><div class="sb" id="search-icon-slot"></div></div>
+  <div class="filter-chips" id="explore-filters"></div>
+  <div id="explore-content"></div>
+</div>
+
+<!-- MAP -->
+<div class="scr" id="scr-map">
+  <div class="topbar"><span class="t">Mapa de Cusco</span><div class="sp"></div><button class="b" id="map-list-btn"></button></div>
+  <div class="map-area" id="map-area"></div>
+  <div id="map-card" style="padding:14px 18px"></div>
+</div>
+
+<!-- DISCOVER -->
+<div class="scr" id="scr-discover">
+  <div class="tb"><h2>Descubrir</h2><p>Desliza para encontrar tu match</p></div>
+  <div id="discover-content" style="padding:0 18px"></div>
+</div>
+
+<!-- MESSAGES -->
+<div class="scr" id="scr-messages">
+  <div class="tb"><h2>Mensajes</h2></div>
+  <div id="messages-content" style="padding:0 18px"></div>
+</div>
+
+<!-- PROFILE -->
+<div class="scr" id="scr-profile">
+  <div class="tb"><h2>Mi perfil</h2></div>
+  <div id="profile-content" style="padding:0 18px"></div>
+</div>
+
+<!-- ROOM DETAIL -->
+<div class="scr" id="scr-detail">
+  <div class="topbar">
+    <button class="b" id="detail-back-btn"></button>
+    <span class="t">Detalle</span><div class="sp"></div>
+    <button class="b" id="detail-fav-btn"></button>
+  </div>
+  <div id="detail-content"></div>
+  <div class="actbar" id="detail-actions">
+    <button class="btn btn-out" id="detail-compare-btn">Comparar</button>
+    <button class="btn btn-pri" style="flex:1" id="detail-contract-btn">Iniciar contrato</button>
+  </div>
+</div>
+
+<!-- CONTRACT STEP 1 -->
+<div class="scr" id="scr-c1">
+  <div class="topbar"><button class="b" id="c1-back-btn"></button><span class="t">Contrato</span></div>
+  <div class="steps" id="c1-steps"></div>
+  <div class="cbody"><h3>Datos personales</h3><p>Informacion que se incluira en el contrato.</p>
+    <div class="fld"><label>Nombre completo</label><input type="text" id="c-name" oninput="Contract.checkStep1()"></div>
+    <div class="fld"><label>DNI</label><input type="text" id="c-dni" maxlength="8" placeholder="8 digitos" oninput="Contract.checkStep1()"></div>
+    <div class="fld"><label>Correo</label><input type="email" id="c-email" oninput="Contract.checkStep1()"></div>
+    <div class="fld"><label>Telefono</label><input type="tel" id="c-phone" oninput="Contract.checkStep1()"></div>
+    <div class="fld"><label>Direccion actual</label><input type="text" id="c-addr" placeholder="Calle Saphi 450" oninput="Contract.checkStep1()"></div>
+  </div>
+  <div class="cnav"><button class="bk" id="c1-cancel-btn">Atras</button><button class="nx" id="c1-btn" disabled onclick="Contract.next1()">Siguiente</button></div>
+</div>
+
+<!-- CONTRACT STEP 2 -->
+<div class="scr" id="scr-c2">
+  <div class="topbar"><button class="b" id="c2-back-btn"></button><span class="t">Contrato</span></div>
+  <div class="steps" id="c2-steps"></div>
+  <div class="cbody"><h3>Clausulas del contrato</h3><p>Codigo Civil Peruano. Lee y acepta cada una.</p>
+    <div id="clauses-list"></div>
+  </div>
+  <div class="cnav"><button class="bk" id="c2-cancel-btn">Atras</button><button class="nx" id="c2-btn" disabled onclick="Contract.next2()">Siguiente</button></div>
+</div>
+
+<!-- CONTRACT STEP 3 -->
+<div class="scr" id="scr-c3">
+  <div class="topbar"><button class="b" id="c3-back-btn"></button><span class="t">Contrato</span></div>
+  <div class="steps" id="c3-steps"></div>
+  <div class="cbody"><h3>Confirmacion y firma</h3>
+    <div class="ssum" id="c3-summary"><h4>Resumen</h4></div>
+    <div class="sarea" id="c3-sign-area"></div>
+    <label class="cack"><input type="checkbox" id="c-confirm" onchange="Contract.checkStep3()"> Confirmo que he leido y acepto todas las clausulas.</label>
+  </div>
+  <div class="cnav"><button class="bk" id="c3-cancel-btn">Atras</button><button class="nx" id="c3-btn" disabled onclick="Contract.sign()">Firmar</button></div>
+</div>
+
+<!-- SUCCESS -->
+<div class="scr" id="scr-success">
+  <div class="suc" id="success-icon-slot"></div>
+  <h2 style="font-size:20px;font-weight:800;margin-bottom:6px;text-align:center">Contrato firmado</h2>
+  <p id="success-msg" style="font-size:13px;color:var(--txt2);text-align:center;max-width:280px;margin:0 auto"></p>
+  <button class="nx" style="margin:20px auto 0;display:block;width:auto;padding:12px 28px" id="success-btn">Volver al inicio</button>
+</div>
+
+<!-- SURVEY -->
+<div class="scr" id="scr-survey">
+  <div class="topbar"><span class="t">Encuesta post-firma</span></div>
+  <div style="padding:0 18px 100px">
+    <h3 style="font-size:17px;font-weight:700;margin-bottom:2px">Tu opinion</h3>
+    <p style="font-size:12px;color:var(--txt2);margin-bottom:20px">Mide si WasiStudent te dio confianza.</p>
+    <div id="survey-content"></div>
+    <button class="btn btn-pri btn-blk" style="margin-top:14px" onclick="Survey.submit()">Enviar</button>
+  </div>
+</div>
+
+<!-- RESULTS -->
+<div class="scr" id="scr-results">
+  <div class="topbar"><button class="b" id="results-back-btn"></button><span class="t">Resultados</span></div>
+  <div style="padding:18px"><h2 style="font-size:20px;font-weight:800;margin-bottom:14px">Resumen</h2>
+    <div id="results-content"></div>
+  </div>
+</div>
+
+<!-- OWNER DASHBOARD -->
+<div class="scr" id="scr-owner">
+  <div class="tb"><h2>Panel de propietaria</h2><p id="owner-greeting"></p></div>
+  <div style="padding:0 18px">
+    <div id="owner-stats"></div>
+    <div class="qa-grid">
+      <div class="qa" id="qa-rooms-btn"><div class="qa-icon"></div><div class="ql">Mis cuartos</div><div class="qs" id="qa-rooms">0 publicados</div></div>
+      <div class="qa" id="qa-reqs-btn"><div class="qa-icon"></div><div class="ql">Solicitudes</div><div class="qs" id="qa-reqs">0 pendientes</div></div>
+      <div class="qa" id="qa-contracts-btn"><div class="qa-icon"></div><div class="ql">Contratos</div><div class="qs">Ver historial</div></div>
+      <div class="qa" id="qa-payments-btn"><div class="qa-icon"></div><div class="ql">Ingresos</div><div class="qs">Pagos recibidos</div></div>
+    </div>
+    <div class="stl">Mis cuartos publicados</div>
+    <div id="owner-rooms-list"></div>
+  </div>
+  <button class="btn btn-pri btn-blk" style="position:fixed;bottom:16px;left:18px;right:18px;max-width:394px" id="publish-btn">Publicar cuarto</button>
+</div>
+
+<!-- PUBLISH ROOM -->
+<div class="scr" id="scr-publish">
+  <div class="topbar"><button class="b" id="publish-back-btn"></button><span class="t">Publicar cuarto</span></div>
+  <div style="padding:0 18px 100px" id="publish-form"></div>
+</div>
+
+<!-- OWNER ROOMS -->
+<div class="scr" id="scr-owner-rooms">
+  <div class="topbar"><button class="b" id="or-back-btn"></button><span class="t">Mis cuartos</span></div>
+  <div id="owner-rooms-full" style="padding:0 18px"></div>
+</div>
+
+<!-- OWNER REQUESTS -->
+<div class="scr" id="scr-owner-requests">
+  <div class="topbar"><button class="b" id="oreq-back-btn"></button><span class="t">Solicitudes</span></div>
+  <div id="owner-requests-list" style="padding:0 18px"></div>
+</div>
+
+<!-- OWNER CONTRACTS -->
+<div class="scr" id="scr-owner-contracts">
+  <div class="topbar"><button class="b" id="oc-back-btn"></button><span class="t">Contratos</span></div>
+  <div id="owner-contracts-list" style="padding:0 18px"></div>
+</div>
+
+<!-- OWNER PAYMENTS -->
+<div class="scr" id="scr-owner-payments">
+  <div class="topbar"><button class="b" id="op-back-btn"></button><span class="t">Ingresos</span></div>
+  <div id="owner-payments-list" style="padding:0 18px"></div>
+</div>
+
+<!-- SETTINGS -->
+<div class="scr" id="scr-settings">
+  <div class="topbar"><button class="b" id="settings-back-btn"></button><span class="t">Configuracion</span></div>
+  <div style="padding:0 18px" id="settings-content"></div>
+</div>
+
+<!-- TRUST SCORE -->
+<div class="scr" id="scr-trust">
+  <div class="topbar"><button class="b" id="trust-back-btn"></button><span class="t">Puntaje de confianza</span></div>
+  <div style="padding:20px 18px" id="trust-content"></div>
+</div>
+
+<!-- REVIEWS -->
+<div class="scr" id="scr-reviews">
+  <div class="topbar"><button class="b" id="rev-back-btn"></button><span class="t">Reseñas</span><div class="sp"></div><button class="btn btn-pri" style="padding:6px 14px;font-size:12px" id="rev-add-btn">Escribir</button></div>
+  <div id="reviews-content" style="padding:0 18px"></div>
+</div>
+
+<!-- ADD REVIEW -->
+<div class="scr" id="scr-add-review">
+  <div class="topbar"><button class="b" id="ar-back-btn"></button><span class="t">Nueva reseña</span></div>
+  <div style="padding:0 18px" id="add-review-form"></div>
+</div>
+
+<!-- FAVORITES -->
+<div class="scr" id="scr-favorites">
+  <div class="topbar"><button class="b" id="fav-back-btn"></button><span class="t">Favoritos</span></div>
+  <div id="fav-content" style="padding:0 18px"></div>
+</div>
+
+<!-- PAYMENTS -->
+<div class="scr" id="scr-payments">
+  <div class="topbar"><button class="b" id="pay-back-btn"></button><span class="t">Pagos</span></div>
+  <div id="payments-content" style="padding:0 18px"></div>
+</div>
+
+<!-- BOTTOM NAV -->
+<div class="bnav" id="bnav" style="display:none">
+  <button class="ni act" id="nav-home"><span class="ni-icon"></span><span>Inicio</span></button>
+  <button class="ni" id="nav-explore"><span class="ni-icon"></span><span>Explorar</span></button>
+  <button class="ni" id="nav-discover"><span class="ni-icon"></span><span>Descubrir</span></button>
+  <button class="ni" id="nav-messages"><span class="ni-icon"></span><span>Mensajes</span></button>
+  <button class="ni" id="nav-profile"><span class="ni-icon"></span><span>Perfil</span></button>
+</div>
+
+</div>
+
+<!-- Scripts -->
+<script src="js/config.js"></script>
+<script src="js/icons.js"></script>
+<script src="js/api.js"></script>
+<script src="js/navigation.js"></script>
+<script src="js/screens/auth.js"></script>
+<script src="js/screens/home.js"></script>
+<script src="js/screens/explore.js"></script>
+<script src="js/screens/map.js"></script>
+<script src="js/screens/discover.js"></script>
+<script src="js/screens/messages.js"></script>
+<script src="js/screens/profile.js"></script>
+<script src="js/screens/detail.js"></script>
+<script src="js/screens/contract.js"></script>
+<script src="js/screens/survey.js"></script>
+<script src="js/screens/owner.js"></script>
+<script src="js/screens/settings.js"></script>
+<script src="js/screens/trust.js"></script>
+<script src="js/screens/reviews.js"></script>
+<script src="js/screens/favorites.js"></script>
+<script src="js/screens/payments.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

@@ -63,14 +63,11 @@ class Room {
   final double utilitiesCost;
   final double depositAmount;
   final int minContractMonths;
-
-  /// Fecha de creación (para ordenar por más reciente).
   final DateTime createdAt;
-
   final List<String> houseRules;
   final List<String> nearbyPlaces;
 
-  const Room({
+Room({
     required this.id,
     required this.title,
     required this.description,
@@ -112,10 +109,10 @@ class Room {
     this.utilitiesCost = 0.0,
     this.depositAmount = 0.0,
     this.minContractMonths = 1,
-    this.createdAt,
+    DateTime? createdAt,
     this.houseRules = const [],
     this.nearbyPlaces = const [],
-  });
+  }) : createdAt = createdAt ?? DateTime.now();
 
   // ── Computed Getters ──────────────────────────────────────────────
 

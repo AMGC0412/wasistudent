@@ -349,7 +349,7 @@ class AppTheme {
       // ── Bottom Navigation ──
       bottomNavigationBarTheme: BottomNavigationBarThemeData(
         type: BottomNavigationBarType.fixed,
-        color: isLight ? WasiColors.surfaceLight : WasiColors.surfaceDark,
+        backgroundColor: isLight ? WasiColors.surfaceLight : WasiColors.surfaceDark,
         selectedItemColor: colorScheme.primary,
         unselectedItemColor: isLight
             ? WasiColors.textTertiaryLight
@@ -446,7 +446,7 @@ class AppTheme {
 
       // ── Bottom Sheet ──
       bottomSheetTheme: BottomSheetThemeData(
-        color: isLight ? WasiColors.surfaceLight : WasiColors.surfaceDark,
+        backgroundColor: isLight ? WasiColors.surfaceLight : WasiColors.surfaceDark,
         surfaceTintColor: Colors.transparent,
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
@@ -460,7 +460,7 @@ class AppTheme {
 
       // ── Dialog ──
       dialogTheme: DialogThemeData(
-        color: isLight ? WasiColors.surfaceLight : WasiColors.surfaceDark,
+        backgroundColor: isLight ? WasiColors.surfaceLight : WasiColors.surfaceDark,
         surfaceTintColor: Colors.transparent,
         elevation: 8,
         shape: RoundedRectangleBorder(
@@ -693,7 +693,7 @@ class AppTheme {
 
       // ── Navigation Bar (Material 3) ──
       navigationBarTheme: NavigationBarThemeData(
-        color: isLight ? WasiColors.surfaceLight : WasiColors.surfaceDark,
+        backgroundColor: isLight ? WasiColors.surfaceLight : WasiColors.surfaceDark,
         surfaceTintColor: Colors.transparent,
         indicatorColor: colorScheme.primaryContainer,
         labelTextStyle: WidgetStateProperty.resolveWith((states) {
@@ -787,7 +787,7 @@ class AppTheme {
 
       // ── Drawer ──
       drawerTheme: DrawerThemeData(
-        color: isLight ? WasiColors.surfaceLight : WasiColors.surfaceDark,
+        backgroundColor: isLight ? WasiColors.surfaceLight : WasiColors.surfaceDark,
         surfaceTintColor: Colors.transparent,
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.horizontal(right: Radius.circular(20)),
@@ -796,14 +796,14 @@ class AppTheme {
 
       // ── Time Picker ──
       timePickerTheme: TimePickerThemeData(
-        color: isLight ? WasiColors.surfaceLight : WasiColors.surfaceDark,
+        backgroundColor: isLight ? WasiColors.surfaceLight : WasiColors.surfaceDark,
         hourMinuteTextColor: colorScheme.primary,
         dayPeriodTextColor: colorScheme.primary,
       ),
 
       // ── Date Picker ──
       datePickerTheme: DatePickerThemeData(
-        color: isLight ? WasiColors.surfaceLight : WasiColors.surfaceDark,
+        backgroundColor: isLight ? WasiColors.surfaceLight : WasiColors.surfaceDark,
         surfaceTintColor: Colors.transparent,
         headerBackgroundColor: colorScheme.primary,
         headerForegroundColor: Colors.white,

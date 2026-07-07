@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import '../config/theme.dart';
 import '../config/routes.dart';
 import '../models/room.dart';
+import '../models/user_preferences.dart' show RoomType;
 import '../providers/room_provider.dart';
 import '../providers/preference_provider.dart';
 import '../utils/format_helpers.dart';
@@ -966,8 +967,15 @@ class _AdvancedFilterSheetState extends State<_AdvancedFilterSheet> {
                 child: ElevatedButton(
                   onPressed: () {
                     final provider = context.read<RoomProvider>();
-                    provider.setFilterBudget(_minBudget, _maxBudget);
-                    provider.setFilterRoomType(_roomType);
+                    provider.setFilterBudget(_maxBudget);
+                    provider.setFilterRoomType(
+                      _roomType.isEmpty
+                          ? null
+                          : RoomType.values.firstWhere(
+                              (e) => e.name == _roomType,
+                              orElse: () => RoomType.private,
+                            ),
+                    );
                     provider.setFilterVerified(_verifiedOnly);
                     provider.setFilterAvailable(_availableOnly);
                     widget.onApply();
