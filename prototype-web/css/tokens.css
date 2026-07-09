@@ -1,0 +1,142 @@
+/* ============================================================
+   WasiStudent — Design Tokens
+   Inspirado en Cusco: terracota adobe, verde andino, crema cálida
+   ============================================================ */
+
+:root {
+  /* ── Paleta primaria: Terracota cusqueña ──────────────────── */
+  --c-primary: #C44536;
+  --c-primary-50: #FBEDEB;
+  --c-primary-100: #F4D3CE;
+  --c-primary-200: #E89D92;
+  --c-primary-300: #E07A5F;
+  --c-primary-400: #D05A45;
+  --c-primary-500: #C44536;
+  --c-primary-600: #A8362A;
+  --c-primary-700: #8B2C20;
+  --c-primary-800: #6B2018;
+  --c-primary-900: #4A1611;
+
+  /* ── Verde andino — éxito ─────────────────────────────────── */
+  --c-success: #2D6A4F;
+  --c-success-50: #E8F3EE;
+  --c-success-100: #C9E5D6;
+  --c-success-200: #95C9AE;
+  --c-success-300: #52B788;
+  --c-success-400: #3D8E68;
+  --c-success-500: #2D6A4F;
+  --c-success-600: #235540;
+
+  /* ── Ámbar dorado — destacados ────────────────────────────── */
+  --c-accent: #E9C46A;
+  --c-accent-soft: #F4E5BC;
+  --c-warning: #E76F51;
+  --c-warning-soft: #FCE4DD;
+
+  /* ── Azul profundo — info ─────────────────────────────────── */
+  --c-info: #264653;
+  --c-info-light: #2A9D8F;
+  --c-info-soft: #D5E8E6;
+
+  /* ── Neutros cálidos (no blanco frío) ─────────────────────── */
+  --c-bg: #FBF7F0;
+  --c-bg-2: #F5EDE0;
+  --c-surface: #FFFFFF;
+  --c-surface-2: #FAF4E9;
+  --c-surface-3: #F2E9D8;
+  --c-outline: #E0D5C0;
+  --c-outline-soft: #ECE3D2;
+
+  /* ── Texto ────────────────────────────────────────────────── */
+  --c-text: #2D2418;
+  --c-text-2: #6B5D4F;
+  --c-text-3: #A0927F;
+  --c-text-inverse: #FBF7F0;
+  --c-text-on-primary: #FFFFFF;
+  --c-text-on-success: #FFFFFF;
+
+  /* ── Estados ──────────────────────────────────────────────── */
+  --c-error: #BC1A1A;
+  --c-error-soft: #FDE0E0;
+  --c-info-bg: #E7F0F2;
+
+  /* ── Tipografía ───────────────────────────────────────────── */
+  --font-sans: 'Inter', -apple-system, 'Segoe UI', system-ui, sans-serif;
+  --font-display: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+
+  --fs-xs: 11px;
+  --fs-sm: 13px;
+  --fs-base: 15px;
+  --fs-md: 17px;
+  --fs-lg: 20px;
+  --fs-xl: 24px;
+  --fs-2xl: 30px;
+  --fs-3xl: 38px;
+  --fs-4xl: 48px;
+
+  --fw-normal: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+  --fw-extrabold: 800;
+  --fw-black: 900;
+
+  --lh-tight: 1.2;
+  --lh-snug: 1.35;
+  --lh-normal: 1.5;
+  --lh-relaxed: 1.65;
+
+  /* ── Espaciado (escala 4px) ───────────────────────────────── */
+  --sp-0: 0;
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 20px;
+  --sp-6: 24px;
+  --sp-8: 32px;
+  --sp-10: 40px;
+  --sp-12: 48px;
+  --sp-16: 64px;
+  --sp-20: 80px;
+
+  /* ── Radios ───────────────────────────────────────────────── */
+  --r-xs: 6px;
+  --r-sm: 10px;
+  --r-md: 14px;
+  --r-lg: 20px;
+  --r-xl: 28px;
+  --r-full: 999px;
+
+  /* ── Sombras (suaves, cálidas) ────────────────────────────── */
+  --sh-xs: 0 1px 2px rgba(74, 22, 17, 0.05);
+  --sh-sm: 0 2px 8px rgba(74, 22, 17, 0.08);
+  --sh-md: 0 6px 20px rgba(74, 22, 17, 0.10);
+  --sh-lg: 0 14px 40px rgba(74, 22, 17, 0.14);
+  --sh-xl: 0 24px 60px rgba(74, 22, 17, 0.20);
+  --sh-primary: 0 8px 24px rgba(196, 69, 54, 0.32);
+  --sh-success: 0 8px 24px rgba(45, 106, 79, 0.28);
+
+  /* ── Transiciones ─────────────────────────────────────────── */
+  --t-fast: 140ms cubic-bezier(0.4, 0, 0.2, 1);
+  --t-base: 220ms cubic-bezier(0.4, 0, 0.2, 1);
+  --t-slow: 380ms cubic-bezier(0.4, 0, 0.2, 1);
+  --t-spring: 480ms cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* ── Layout ───────────────────────────────────────────────── */
+  --sidebar-w: 264px;
+  --header-h: 68px;
+  --max-w: 1280px;
+  --bottom-nav-h: 64px;
+
+  /* ── z-index ──────────────────────────────────────────────── */
+  --z-base: 1;
+  --z-sticky: 100;
+  --z-header: 200;
+  --z-sidebar: 300;
+  --z-overlay: 900;
+  --z-modal: 1000;
+  --z-toast: 1200;
+  --z-loading: 2000;
+}

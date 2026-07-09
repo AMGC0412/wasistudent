@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#C44536">
+<meta name="description" content="WasiStudent — Encuentra tu wasi confiable en Cusco. Verificación, contrato legal y trust score en una sola plataforma.">
+<title>WasiStudent — Tu wasi te espera</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@600;700;800;900&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23C44536'/%3E%3Ctext x='16' y='23' font-size='20' font-weight='900' fill='white' text-anchor='middle' font-family='sans-serif'%3EW%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════
+     LOADING SCREEN
+     ═══════════════════════════════════════════════════════════ -->
+<div class="loading-screen" id="loading-screen">
+  <div class="loading-logo">W</div>
+  <div class="loading-name">WasiStudent</div>
+  <div class="loading-tag">Tu wasi te espera</div>
+  <div class="loading-bar"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     APP ROOT — reemplazado dinámicamente por Auth/Onboarding/Main
+     ═══════════════════════════════════════════════════════════ -->
+<div id="app-root"></div>
+
+<!-- Toast container -->
+<div class="toast-container" id="toast-container"></div>
+
+<!-- Modal mount point -->
+<div id="modal-mount"></div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SCRIPTS — ordenados por dependencia
+     ═══════════════════════════════════════════════════════════ -->
+<script src="js/core/icons.js"></script>
+<script src="js/core/store.js"></script>
+<script src="js/core/data.js"></script>
+<script src="js/core/router.js"></script>
+<script src="js/core/ui.js"></script>
+<script src="js/services/auth.js"></script>
+<script src="js/services/onboarding.js"></script>
+<script src="js/components/roomCard.js"></script>
+<script src="js/components/trustRing.js"></script>
+<script src="js/components/filters.js"></script>
+<script src="js/components/checklist.js"></script>
+<script src="js/components/forms.js"></script>
+
+<!-- Pantallas -->
+<script src="js/screens/auth.js"></script>
+<script src="js/screens/onboarding.js"></script>
+<script src="js/screens/home.js"></script>
+<script src="js/screens/discover.js"></script>
+<script src="js/screens/detail.js"></script>
+<script src="js/screens/trust.js"></script>
+<script src="js/screens/contract.js"></script>
+<script src="js/screens/favorites.js"></script>
+<script src="js/screens/messages.js"></script>
+<script src="js/screens/payments.js"></script>
+<script src="js/screens/reviews.js"></script>
+<script src="js/screens/profile.js"></script>
+<script src="js/screens/settings.js"></script>
+<script src="js/screens/ownerDashboard.js"></script>
+<script src="js/screens/ownerRooms.js"></script>
+<script src="js/screens/ownerRequests.js"></script>
+<script src="js/screens/ownerContracts.js"></script>
+<script src="js/screens/ownerPayments.js"></script>
+
+<!-- Bootstrap -->
+<script src="js/app.js"></script>
+</body>
+</html>

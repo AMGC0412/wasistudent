@@ -1,0 +1,32 @@
+# Flutter
+build/
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+ios/Pods/
+android/.gradle/
+android/local.properties
+*.iml
+.idea/
+
+# VS Code
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Generated
+*.g.dart
+*.freezed.dart
+*.mocks.dart
+
+# Hive temp
+*.hive.lock
+
+# Logs
+*.log
+dev.log
