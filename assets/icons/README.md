@@ -1,60 +1,68 @@
 # WasiStudent
 
-Alquilar un cuarto en Cusco es un dolor de cabeza. Y no lo digo por los precios, sino porque te topas con fotos que no son, contratos que no existen y dueños que suben el precio porque sí. Eso es lo que queremos arreglar con esto.
+Plataforma de alquiler de cuartos verificada para estudiantes, egresados y trabajadores en Cusco.
 
-## ¿Qué está pasando aquí?
+## Contexto del proyecto
 
-La mayoría de alquileres se hacen de palabra. Luego vienen los problemas: te piden que te vayas de un día para otro o te suben el alquiler sin aviso. Además, las páginas de clasificados están llenas de anuncios falsos; ya varios conocidos han perdido entre 150 y 800 soles por depósitos que nunca devolvieron. Y ni hablar de los cuartos: algunos parecen armarios, sin ventanas, y eso afecta a cualquiera que quiera estudiar o trabajar tranquilo.
+Esto surge por la experiencia de buscar alojamiento en Cusco y encontrarse con que las fotos no coinciden, los precios cambian sin aviso y casi nunca hay un contrato de por medio. La idea es simple: que el inquilino sepa lo que va a encontrar y que el dueño tenga un respaldo legal sin tanto papeleo.
 
-## Nuestra idea
+Por ahora estamos en fase de prototipo, construyendo la interfaz y probando el flujo de usuario.
 
-Queremos que puedas buscar un lugar **viendo fotos reales** (vamos al sitio a verificarlas) y con un **contrato digital** que sí tenga validez legal (amparado en el Código Civil y la Ley 30201). Además, tanto el que alquila como el que arrienda podrán calificarse mutuamente, para que no te pidan un garante que no tienes.
+## Propuesta base
 
-## Estado actual del código (MVP)
+- **Verificación in situ**: Ir a los lugares para tomar fotos reales y evaluar condiciones básicas (ventilación, espacio, etc.).
+- **Contrato digital**: Con validez legal (Código Civil y Ley 30201) para evitar que te suban el precio o te pidan salir de golpe.
+- **Reputación bidireccional**: Se califican tanto el propietario como el inquilino, para que no sea necesario pedir un garante tradicional.
 
-Esto recién empieza. Por ahora estamos armando el prototipo visual:
+## Stack técnico (MVP)
 
-- **Frontend (lo que ves)**: Flutter.
-- **Backend (lo que mueve los datos)**: estamos viendo si va con Node o Python, pero la base de datos será PostgreSQL con Supabase.
-- **Extras planeados**: queremos meterle un poquito de IA (con OpenAI) para que ayude a hacer match entre lo que buscas y lo que ofrecen, y conectar con WhatsApp y Google Maps cuando esté más avanzado.
-
-## Sobre el mapa que ves en el mockup
-
-Por ahora, el mapa no es real. Está dibujado con `CustomPaint` dentro de Flutter, así que no necesitas ninguna API key de Google ni de nadie para que se vea. Es solo una maqueta estática.
-
-Cuando queramos poner un mapa de verdad, tenemos varias opciones:
-- **Google Maps**: la clásica, pero toca poner la API key en el manifest de Android y en el HTML de web.
-- **Mapbox**: similar a Google, con su propia key.
-- **OpenStreetMap (Flutter Map)**: si no queremos gastar ni un sol en API keys, esta opción es totalmente gratuita y funciona bien.
-
-Por ahora, con el dibujo estático nos sirve para mostrar la interfaz.
+- **Frontend (UI/Prototipo)**: Flutter.
+- **Backend (Planificado)**: Node.js / Python + PostgreSQL (con Supabase).
+- **IA/NLP (Planificado)**: OpenAI GPT-4o-mini para asistir en el match entre oferta y demanda.
+- **APIs (Planificadas)**: WhatsApp Business API, Google Maps y APIs peruanas (DNI/SUNARP).
 
 ## Equipo
 
 - Adriel Mithuar Guevara Cusi
 - Will Edson Mayta Ttito
 
-Estado actual
-El mockup usa mapa visual estático dibujado con CustomPaint(ver lib/screens/explore_map_screen.dart). No requiere pins PNG niAPI key de ningún proveedor de mapas.
+---
 
-Cuándo migrar a un mapa real
-Cuando se quiera tener un mapa real con calles, navegación, etc., sepuede integrar cualquier proveedor:
+## Notas técnicas del desarrollo (Mockup)
 
-Opción 1: Google Maps
-Agregar google_maps_flutter: ^2.6.1 al pubspec.yaml.
-Reemplazar el widget _MapCanvas por GoogleMap(...).
-Configurar API key en:
-Android: android/app/src/main/AndroidManifest.xml
-<meta-data    android:name="com.google.android.geo.API_KEY"    android:value="TU_API_KEY" />
-Web: web/index.html antes de </head>
-<script src="https://maps.googleapis.com/maps/api/js?key=TU_API_KEY"></script>
-Opción 2: Mapbox
-Agregar mapbox_gl: ^0.16.0 al pubspec.yaml.
+**Estado actual**  
+El mockup usa mapa visual estático dibujado con CustomPaint (ver `lib/screens/explore_map_screen.dart`). No requiere pins PNG ni API key de ningún proveedor de mapas.
+
+**Cuándo migrar a un mapa real**  
+Cuando se quiera tener un mapa real con calles, navegación, etc., se puede integrar cualquier proveedor:
+
+**Opción 1: Google Maps**  
+Agregar `google_maps_flutter: ^2.6.1` al `pubspec.yaml`.  
+Reemplazar el widget `_MapCanvas` por `GoogleMap(...)`.  
+Configurar API key en:  
+- Android: `android/app/src/main/AndroidManifest.xml`  
+  ```xml
+  <meta-data
+      android:name="com.google.android.geo.API_KEY"
+      android:value="TU_API_KEY" />
+  ```
+- Web: `web/index.html` antes de `</head>`  
+  ```html
+  <script src="https://maps.googleapis.com/maps/api/js?key=TU_API_KEY"></script>
+  ```
+
+**Opción 2: Mapbox**  
+Agregar `mapbox_gl: ^0.16.0` al `pubspec.yaml`.  
 Similar setup con API key de Mapbox.
-Opción 3: OpenStreetMap (gratis)
-Agregar flutter_map: ^6.0.0 al pubspec.yaml.
+
+**Opción 3: OpenStreetMap (gratis)**  
+Agregar `flutter_map: ^6.0.0` al `pubspec.yaml`.  
 No requiere API key (usa tiles de OpenStreetMap públicos).
-Generar pins personalizados (opcional)
+
+**Generar pins personalizados (opcional)**  
 Si se quieren pins con el precio dibujado encima:
 
-// Usar canvas personalizado + convertir a BitmapDescriptor// Ver: https://pub.dev/packages/google_maps_flutter#custom-markers
+```dart
+// Usar canvas personalizado + convertir a BitmapDescriptor
+// Ver: https://pub.dev/packages/google_maps_flutter#custom-markers
+```
